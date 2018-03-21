@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            function changeImg(source)
+            {
+                document.pict.src = source + '.png';
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+                <div class="image">
+                <img src="image.jpg"/>
+            </div>
+            <div class="main-content">
+                <button class="add" id="add">
+                    <img name="pict" src="Newsupport.png" onmouseout="changeImg('Newsupport')" onMouseDown="changeImg('after')" onMouseUp="changeImg('Newsupport')"/>
+                </button>
+                <div id="list">
+                    <button class="tabBtn" id="1">New Tab</button>
+                </div>
+                <div class="content-text">
+                    <p id="text"></p>
+                </div>
+            </div>
+        </div>
+        <script>
+            var count=1;
+            window.onload = () => {
+                var funct=function()
+                {
+                    var text=document.getElementById('text');
+                    var clishe="You opened tab №" + this.id;
+                    text.textContent=clishe;
+                };
+                document.getElementById('1').addEventListener('click', funct);
+                add.onclick=function()
+                {
+                    var father=document.getElementById('list');
+                    var childList=document.createElement('button');
+                    childList.className="tabBtn";
+                    childList.id = ++count;
+                    childList.textContent="New Tab";
+                    childList.addEventListener('click', funct);
+                    father.appendChild(childList);
+                    father.scrollBy(father.scrollWidth,0);
+                };
+            };
+        </script>
+    </body>
+</html>
